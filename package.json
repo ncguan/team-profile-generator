@@ -1,0 +1,26 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ncguan/team-profile-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ncguan/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/ncguan/team-profile-generator#readme",
+  "devDependencies": {
+    "jest": "^29.2.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
