@@ -14,17 +14,44 @@ const managerQs = [
     {
         type: 'input',
         name: 'id',
-        message: "What is the team manager's id?"
+        message: "What is the team manager's id?",
+        validate(answer) {
+            const idRegex = /^[\d]+$/
+            if (!idRegex.test(answer)) {
+                return "Please enter a valid id number"
+            }
+            else {
+                return true
+            }
+        }
     },
     {
         type: 'input',
         name: 'email',
-        message: "What is the team manager's email?"
+        message: "What is the team manager's email?",
+        validate(answer) {
+            const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]+$/
+            if (!emailRegex.test(answer)) {
+                return "Please enter a valid email"
+            }
+            else {
+                return true
+            }
+        }
     },
     {
         type: 'input',
         name: 'office',
-        message: "What is the team manager's office number?"
+        message: "What is the team manager's office number?",
+        validate(answer) {
+            const officeRegex = /^[\w\s]+$/
+            if (!officeRegex.test(answer)) {
+                return "Please enter a valid office number"
+            }
+            else {
+                return true
+            }
+        }
     },
     {
         type: 'list',
@@ -43,17 +70,44 @@ const engineerQs = [
     {
         type: 'input',
         name: 'id',
-        message: "What is the engineer's id?"
+        message: "What is the engineer's id?",
+        validate(answer) {
+            const idRegex = /^[\d]+$/
+            if (!idRegex.test(answer)) {
+                return "Please enter a valid id number"
+            }
+            else {
+                return true
+            }
+        }
     },
     {
         type: 'input',
         name: 'email',
-        message: "What is the engineer's email?"
+        message: "What is the engineer's email?",
+        validate(answer) {
+            const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]+$/
+            if (!emailRegex.test(answer)) {
+                return "Please enter a valid email"
+            }
+            else {
+                return true
+            }
+        }
     },
     {
         type: 'input',
         name: 'office',
-        message: "What is the engineer's GitHub username?"
+        message: "What is the engineer's GitHub username?",
+        validate(answer) {
+            const githubRegex = /^[\w](?:[\w]|-(?=\w)){0,38}$/
+            if (!githubRegex.test(answer)) {
+                return "Please enter a valid gitHub username"
+            }
+            else {
+                return true
+            }
+        }
     },
     {
         type: 'list',
@@ -72,12 +126,30 @@ const internQs = [
     {
         type: 'input',
         name: 'id',
-        message: "What is the intern's id?"
+        message: "What is the intern's id?",
+        validate(answer) {
+            const idRegex = /^[\d]+$/
+            if (!idRegex.test(answer)) {
+                return "Please enter a valid id number"
+            }
+            else {
+                return true
+            }
+        }
     },
     {
         type: 'input',
         name: 'email',
-        message: "What is the intern's email?"
+        message: "What is the intern's email?",
+        validate(answer) {
+            const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]+$/
+            if (!emailRegex.test(answer)) {
+                return "Please enter a valid email"
+            }
+            else {
+                return true
+            }
+        }
     },
     {
         type: 'input',
