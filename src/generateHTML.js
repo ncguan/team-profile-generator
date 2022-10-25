@@ -17,7 +17,7 @@ function renderCards(data) {
     <div class="card mb-4 ml-4 mr-4">
     <header class="card-header">
         <p class="card-header-title">
-            ${data[i].name}
+            ${data[i].name} (${data[i].role})
         </p>
     </header>
     <div class="card-content">
