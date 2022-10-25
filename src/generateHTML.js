@@ -1,12 +1,12 @@
 function employeeInfo(employee) {
-    if (employee.role == "Manager") {
-        return `Office Number: ${employee.officeNum}`
+    if (employee.getRole() == "Manager") {
+        return `Office Number: ${employee.getOfficeNum()}`
     }
-    else if (employee.role == "Engineer") {
-        return `GitHub: <a href="https://github.com/${employee.github}">${employee.github}</a>`
+    else if (employee.getRole() == "Engineer") {
+        return `GitHub: <a href="https://github.com/${employee.getGithub()}">${employee.getGithub()}</a>`
     }
     else {
-        return `School: ${employee.school}`
+        return `School: ${employee.getSchool()}`
     }
 }
 
@@ -17,7 +17,7 @@ function renderCards(data) {
     <div class="card mb-4 ml-4 mr-4">
     <header class="card-header">
         <p class="card-header-title">
-            ${data[i].name} (${data[i].role})
+            ${data[i].getName()} (${data[i].getRole()})
         </p>
     </header>
     <div class="card-content">
@@ -25,10 +25,10 @@ function renderCards(data) {
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>Id: ${data[i].id}</td>
+                        <td>Id: ${data[i].getId()}</td>
                     </tr>
                     <tr>
-                        <td>Email: <a href = "mailto: ${data[i].email}">${data[i].email}</a></td>
+                        <td>Email: <a href = "mailto: ${data[i].getEmail()}">${data[i].getEmail()}</a></td>
                     </tr>
                     <tr>
                         <td>${employeeInfo(data[i])}</td>
