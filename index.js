@@ -1,25 +1,26 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateHTML = require('./src/generateHTML');
 
 const managerQs = [
     {
         type: 'input',
-        name: 'managerName',
+        name: 'name',
         message: "What is the team manager's name?"
     },
     {
         type: 'input',
-        name: 'managerId',
+        name: 'id',
         message: "What is the team manager's id?"
     },
     {
         type: 'input',
-        name: 'managerEmail',
+        name: 'email',
         message: "What is the team manager's email?"
     },
     {
         type: 'input',
-        name: 'managerOffice',
+        name: 'office',
         message: "What is the team manager's office number?"
     },
     {
@@ -33,22 +34,22 @@ const managerQs = [
 const engineerQs = [
     {
         type: 'input',
-        name: 'engineerName',
+        name: 'name',
         message: "What is the engineer's name?"
     },
     {
         type: 'input',
-        name: 'engineerId',
+        name: 'id',
         message: "What is the engineer's id?"
     },
     {
         type: 'input',
-        name: 'engineerEmail',
+        name: 'email',
         message: "What is the engineer's email?"
     },
     {
         type: 'input',
-        name: 'engineerOffice',
+        name: 'office',
         message: "What is the engineer's GitHub username?"
     },
     {
@@ -62,22 +63,22 @@ const engineerQs = [
 const internQs = [
     {
         type: 'input',
-        name: 'internName',
+        name: 'name',
         message: "What is the intern's name?"
     },
     {
         type: 'input',
-        name: 'internId',
+        name: 'id',
         message: "What is the intern's id?"
     },
     {
         type: 'input',
-        name: 'internEmail',
+        name: 'email',
         message: "What is the intern's email?"
     },
     {
         type: 'input',
-        name: 'internSchool',
+        name: 'office',
         message: "What is the intern's school?"
     },
     {
@@ -88,19 +89,24 @@ const internQs = [
     }
 ]
 
+const employees = [];
+
 function init() {
     inquirer
         .prompt(managerQs)
         .then(answer => {
             switch (answer.addMember) {
                 case 'Engineer':
+                    employees.push(answer);
                     askEngineerQs();
                     break;
                 case 'Intern':
+                    employees.push(answer);
                     askInternQs();
                     break;
                 case "I don't want to add any more team members":
-                    fs.writeFile("./dist/team-profile.html", "abcde", (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
+                    employees.push(answer);
+                    fs.writeFile("./dist/team-profile.html", generateHTML(employees), (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
                     break;
             }
         });
@@ -112,13 +118,16 @@ function askEngineerQs() {
         .then(answer => {
             switch (answer.addMember) {
                 case 'Engineer':
+                    employees.push(answer);
                     askEngineerQs();
                     break;
                 case 'Intern':
+                    employees.push(answer);
                     askInternQs();
                     break;
                 case "I don't want to add any more team members":
-                    fs.writeFile("./dist/team-profile.html", "abcde", (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
+                    employees.push(answer);
+                    fs.writeFile("./dist/team-profile.html", generateHTML(employees), (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
                     break;
             }
         });
@@ -130,13 +139,16 @@ function askInternQs() {
         .then(answer => {
             switch (answer.addMember) {
                 case 'Engineer':
+                    employees.push(answer);
                     askEngineerQs();
                     break;
                 case 'Intern':
+                    employees.push(answer);
                     askInternQs();
                     break;
                 case "I don't want to add any more team members":
-                    fs.writeFile("./dist/team-profile.html", "abcde", (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
+                    employees.push(answer);
+                    fs.writeFile("./dist/team-profile.html", generateHTML(employees), (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
                     break;
             }
         });
