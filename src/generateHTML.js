@@ -3,7 +3,7 @@ function employeeInfo(employee) {
         return `Office Number: ${employee.officeNum}`
     }
     else if (employee.role == "Engineer") {
-        return `GitHub: ${employee.github}`
+        return `GitHub: <a href="https://github.com/${employee.github}">${employee.github}</a>`
     }
     else {
         return `School: ${employee.school}`
@@ -28,7 +28,7 @@ function renderCards(data) {
                         <td>Id: ${data[i].id}</td>
                     </tr>
                     <tr>
-                        <td>Email: ${data[i].email}</td>
+                        <td>Email: <a href = "mailto: ${data[i].email}">${data[i].email}</a></td>
                     </tr>
                     <tr>
                         <td>${employeeInfo(data[i])}</td>
