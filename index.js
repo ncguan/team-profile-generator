@@ -1,6 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./src/generateHTML');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+const Manager = require('./lib/manager');
 
 const managerQs = [
     {
@@ -95,17 +98,16 @@ function init() {
     inquirer
         .prompt(managerQs)
         .then(answer => {
+            const managerA = new Manager(answer.name, answer.id, answer.email, answer.office);
+            employees.push(managerA);
             switch (answer.addMember) {
                 case 'Engineer':
-                    employees.push(answer);
                     askEngineerQs();
                     break;
                 case 'Intern':
-                    employees.push(answer);
                     askInternQs();
                     break;
                 case "I don't want to add any more team members":
-                    employees.push(answer);
                     fs.writeFile("./dist/team-profile.html", generateHTML(employees), (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
                     break;
             }
@@ -116,17 +118,16 @@ function askEngineerQs() {
     inquirer
         .prompt(engineerQs)
         .then(answer => {
+            let engineerA = new Engineer(answer.name, answer.id, answer.email, answer.office);
+            employees.push(engineerA);
             switch (answer.addMember) {
                 case 'Engineer':
-                    employees.push(answer);
                     askEngineerQs();
                     break;
                 case 'Intern':
-                    employees.push(answer);
                     askInternQs();
                     break;
                 case "I don't want to add any more team members":
-                    employees.push(answer);
                     fs.writeFile("./dist/team-profile.html", generateHTML(employees), (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
                     break;
             }
@@ -137,17 +138,16 @@ function askInternQs() {
     inquirer
         .prompt(internQs)
         .then(answer => {
+            const internA = new Intern(answer.name, answer.id, answer.email, answer.office);
+            employees.push(internA);
             switch (answer.addMember) {
                 case 'Engineer':
-                    employees.push(answer);
                     askEngineerQs();
                     break;
                 case 'Intern':
-                    employees.push(answer);
                     askInternQs();
                     break;
                 case "I don't want to add any more team members":
-                    employees.push(answer);
                     fs.writeFile("./dist/team-profile.html", generateHTML(employees), (err) => err ? console.log(err) : console.log('Successfully created a team profile HTML file in the dist folder'))
                     break;
             }

@@ -1,11 +1,23 @@
+function employeeInfo(employee) {
+    if (employee.role == "Manager") {
+        return `Office Number: ${employee.officeNum}`
+    }
+    else if (employee.role == "Engineer") {
+        return `GitHub: ${employee.github}`
+    }
+    else {
+        return `School: ${employee.school}`
+    }
+}
+
 function renderCards(data) {
     let cards = ``
-    for (let i=0; i<data.length; i++){
-    cards=cards.concat(`
-    <div class="card">
+    for (let i = 0; i < data.length; i++) {
+        cards = cards.concat(`
+    <div class="card mb-4 ml-4 mr-4">
     <header class="card-header">
         <p class="card-header-title">
-            Name of Employee
+            ${data[i].name}
         </p>
     </header>
     <div class="card-content">
@@ -13,13 +25,13 @@ function renderCards(data) {
             <table class="table">
                 <tbody>
                     <tr>
-                        <td>Name: ${data[i].name}</td>
-                    </tr>
-                    <tr>
                         <td>Id: ${data[i].id}</td>
                     </tr>
                     <tr>
-                        <td>Office: ${data[i].office}</td>
+                        <td>Email: ${data[i].email}</td>
+                    </tr>
+                    <tr>
+                        <td>${employeeInfo(data[i])}</td>
                     </tr>
                 </tbody>
             </table>
